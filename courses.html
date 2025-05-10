@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Educational Courses | Kashmir Crypto Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+        <!-- Main Courses Content (Right Side) -->
+        <div class="dashboard-content">
+            <h2>Free Educational Courses</h2>
+            <p>Learn more about crypto with our free courses—perfect for beginners and seasoned investors alike.</p>
+
+            <div class="course">
+                <h3>Welcome to Kashmir Crypto Solutions</h3>
+                <p>Learn how to use our website, schedule and attend Zoom calls, and initiate Active Plans for your account.</p>
+                <p><a href="https://youtu.be/03EgkFAK0WM" target="_blank">Watch Now</a></p>
+            </div>
+
+            <div class="course">
+                <h3>Introduction to Cryptocurrency</h3>
+                <p>Understand the basics of cryptocurrency, including what it is, how it works, and why it matters. Perfect for beginners.</p>
+                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
+            </div>
+            <div class="course">
+                <h3>Bitcoin Deep Dive</h3>
+                <p>Explore Bitcoin in detail—its history, technology, and investment potential. Learn how to safely store and manage your BTC.</p>
+                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
+            </div>
+            <div class="course">
+                <h3>Crypto Storage</h3>
+                <p>All about how to safely secure your crypto. Hot vs Cold Storage, Wallet types, CEX vs DEX, and everything we do ourselves for protection.</p>
+                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
+            </div>
+
+
+            <div class="course">
+                <h3>Stablecoins Explained</h3>
+                <p>Learn about stablecoins like USDC, how they maintain their value, and how to use them for steady growth.</p>
+                <p><a href="https://www.youtube.com/watch?v=example3" target="_blank">Watch Now</a></p>
+            </div>
+
+            <p><a id="back-to-dashboard" href="#">Back to Dashboard</a> | <a href="index.html">Log Out</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Set the "Back to Dashboard" link dynamically
+        document.addEventListener("DOMContentLoaded", function() {
+            const dashboardLink = document.getElementById("back-to-dashboard");
+            const userDashboard = localStorage.getItem("userDashboard") || "index.html"; // Fallback to index.html if not set
+            dashboardLink.href = userDashboard;
+        });
+    </script>
+</body>
+</html>

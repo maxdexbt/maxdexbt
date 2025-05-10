@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Andrew | Kashmir Crypto Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Zoom Calls Section (Top Left) -->
+        <div class="zoom-calls">
+            <h3>Upcoming Zoom Calls & Classes</h3>
+            <ul>
+                <li><strong>April 15, 2025, 7:00 PM:</strong> <a href="https://zoom.us/j/123456789" target="_blank">Crypto Basics 101</a></li>
+                <li><strong>April 22, 2025, 6:30 PM:</strong> <a href="https://zoom.us/j/987654321" target="_blank">BTC Market Update</a></li>
+                <li><strong>April 29, 2025, 8:00 PM:</strong> <a href="https://zoom.us/j/456789123" target="_blank">Q&A with the Team</a></li>
+                <li><strong>March 02, 2025, 7:00 PM:</strong> <a href="https://zoom.us/j/456789123" target="_blank">Scheduled 1 on 1</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Dashboard Content (Right Side) -->
+        <div class="dashboard-content">
+            <h2>Andrews's Dashboard</h2>
+
+  <h3>Holdings</h3>
+            <ul>
+               <li></li>
+        
+            </ul>
+         
+            <h3>Active Plans</h3>
+            <p></p>
+
+            <h3>Recent Activity</h3>
+            <ul>
+
+                <li>April 1, 2025: Joined Kashmir! </li>
+            </ul>
+            <p>
+		<a href="courses.html">Free Educational Courses</a> | 
+                <a id="schedule-1on1" href="#">Schedule a 1-on-1</a> | 
+                <a href="index.html">Log Out</a>
+
+		</p>
+
+
+
+   
+        </div>
+    </div>
+    <script src="script.js"></script>
+<script>
+        // Set the "Schedule a 1-on-1" link dynamically
+        document.addEventListener("DOMContentLoaded", function() {
+            const scheduleLink = document.getElementById("schedule-1on1");
+            const username = localStorage.getItem("currentUser") || "User";
+            const email = "joshlaflamme@hotmail.ca"; // Replace with your email address
+            const subject = encodeURIComponent(`1-on-1 Request from ${username}`);
+            const body = encodeURIComponent(`Hi, I would like to schedule a 1-on-1 session. Please contact me to arrange a time. Thanks, ${username}`);
+            scheduleLink.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        });
+    </script>
+</body>
+</html>

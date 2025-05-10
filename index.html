@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="login">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashmir Crypto Solutions - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Add the image above the login area -->
+        <img src="file:///Users/Josh/Downloads/KashmirCrypto/crypto-login-image.jpg" alt="Crypto Login Image" class="login-image">
+
+        <h1>Welcome to Kashmir Crypto Solutions</h1>
+        <p><em>Just for Our Friends and Family</em></p>
+        <p>Please log in to continue</p>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <p id="error" style="color: red; display: none;">Invalid username or password.</p>
+        <p>Need your login? Contact Administration.</p>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Clear error message on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("error").style.display = "none";
+        });
+    </script>
+</body>
+</html>
