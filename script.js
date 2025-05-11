@@ -5,7 +5,7 @@ const users = {
     "Drew": { password: "99Thunder99", dashboard: "dashboard-andrew.html" },
     "Lanny": { password: "Kash55555", dashboard: "dashboard-lanny.html" },
     "Lawton": { password: "Tinman2025", dashboard: "dashboard-lawton.html" },
-    "DeanL": { password: "Skipper2025", dashboard: "dashboard-dean.html" },
+    "RichChad": { password: "Blake2025", dashboard: "dashboard-austin.html" },
     "ZMan": { password: "Kash2025", dashboard: "dashboard-zach.html" },
     "CPack": { password: "Pacman16", dashboard: "dashboard-christen.html" },
     "D2025": { password: "Pizza96", dashboard: "dashboard-dustin.html" },
