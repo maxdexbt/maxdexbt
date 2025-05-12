@@ -9,6 +9,7 @@ const users = {
     "ZMan": { password: "Kash2025", dashboard: "dashboard-zach.html" },
     "CPack": { password: "Pacman16", dashboard: "dashboard-christen.html" },
     "D2025": { password: "Pizza96", dashboard: "dashboard-dustin.html" },
+    "DL2025": { password: "Skipper375", dashboard: "dashboard-dean.html" },
     "Deaner": { password: "Hockey16", dashboard: "dashboard-deano.html" } 
 };
 
