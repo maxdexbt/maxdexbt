@@ -21,50 +21,85 @@
 
         <!-- Main Dashboard Content (Right Side) -->
         <div class="dashboard-content">
-            <h2>Joe's Dashboard - Dev</h2>
+            <h2>Joe's Dashboard - Dev Test</h2>
 
-  <h3>Holdings</h3>
+            <h3>Holdings</h3>
             <ul>
-                <li>44.09M BONK: $444.35</li>
-                <li>0.03446 SOL: $3.68</li>
-                <li>845 USDC: $845.00</li>
+                <li>44.09M BONK: <span id="bonk-value">$444.35</span></li>
+                <li>0.03446 SOL: <span id="sol-value">$3.68</span></li>
+                <li>845 USDC: <span id="usdc-value">$845.00</span></li>
             </ul>
-         
+            <p><strong>Total Estimated Value:</strong> <span id="total-value">$1293.03</span></p>
+
             <h3>Active Plans</h3>
             <p>Staking - 50M BONK staked with BONK Rewards.</p>
-             <p>Staking - 20 SOL Staked with Phantom Validator</p>
-	    <p>Airdrop Farming - BONKmas Event & Phantom Wallet</p>
+            <p>Staking - 20 SOL Staked with Phantom Validator</p>
 
             <h3>Recent Activity</h3>
             <ul>
                 <li>April 8, 2025: BONK Staking Plan Started </li>
-              
                 <li>April 4, 2025: 2000 USDC Deposited </li>
                 <li>April 1, 2025: Joined Kashmir! </li>
             </ul>
             <p>
-		<a href="courses.html">Free Educational Courses</a> | 
+                <a href="courses.html">Free Educational Courses</a> | 
                 <a id="schedule-1on1" href="#">Schedule a 1-on-1</a> | 
                 <a href="index.html">Log Out</a>
-
-		</p>
-
-
-
-   
+            </p>
         </div>
     </div>
     <script src="script.js"></script>
-<script>
+    <script>
         // Set the "Schedule a 1-on-1" link dynamically
         document.addEventListener("DOMContentLoaded", function() {
             const scheduleLink = document.getElementById("schedule-1on1");
             const username = localStorage.getItem("currentUser") || "User";
-            const email = "joshlaflamme@hotmail.ca"; // Replace with your email address
+            const email = "joshlaflamme@hotmail.ca";
             const subject = encodeURIComponent(`1-on-1 Request from ${username}`);
             const body = encodeURIComponent(`Hi, I would like to schedule a 1-on-1 session. Please contact me to arrange a time. Thanks, ${username}`);
             scheduleLink.href = `mailto:${email}?subject=${subject}&body=${body}`;
+
+            // Fetch real-time prices and update holdings
+            fetchRealTimePrices();
         });
+
+        function fetchRealTimePrices() {
+            fetch('https://api.coingecko.com/api/v3/simple/price?ids=bonk,solana,usd-coin&vs_currencies=usd')
+                .then(response => response.json())
+                .then(data => {
+                    // Extract prices
+                    const bonkPrice = data.bonk.usd;
+                    const solPrice = data.solana.usd;
+                    const usdcPrice = data['usd-coin'].usd;
+
+                    // Calculate values based on holdings
+                    const bonkValue = (44.09e6 * bonkPrice).toFixed(2); // 44.09M BONK
+                    const solValue = (0.03446 * solPrice).toFixed(2); // 0.03446 SOL
+                    const usdcValue = (845 * usdcPrice).toFixed(2); // 845 USDC
+
+                    // Update the DOM with real-time values
+                    document.getElementById('bonk-value').textContent = `$${bonkValue}`;
+                    document.getElementById('sol-value').textContent = `$${solValue}`;
+                    document.getElementById('usdc-value').textContent = `$${usdcValue}`;
+
+                    // Calculate and display total estimated value
+                    const totalValue = (parseFloat(bonkValue) + parseFloat(solValue) + parseFloat(usdcValue)).toFixed(2);
+                    document.getElementById('total-value').textContent = `$${totalValue}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching real-time prices:', error);
+                    // Fallback to static values if API fails
+                    document.getElementById('bonk-value').textContent = '$444.35';
+                    document.getElementById('sol-value').textContent = '$3.68';
+                    document.getElementById('usdc-value').textContent = '$845.00';
+                    document.getElementById('total-value').textContent = '$1293.03';
+                });
+        }
+
+        function logout() {
+            localStorage.removeItem("userDashboard");
+            localStorage.removeItem("currentUser");
+        }
     </script>
 </body>
 </html>
