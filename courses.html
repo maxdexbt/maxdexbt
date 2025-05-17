@@ -3,56 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Educational Courses | Kashmir Crypto Solutions</title>
+    <title>Educational Courses | Kashmir Crypto Solutions</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="page-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="nav-buttons">
+                <h3>Menu</h3>
+                <a id="back-to-dashboard" href="#">Back to Dashboard</a>
+                <a href="index.html" onclick="logout()">Log Out</a>
+                <div class="divider"></div>
+                <button class="tab-button active" data-tab="beginner">Beginner</button>
+                <button class="tab-button" data-tab="intermediate">Intermediate</button>
+                <button class="tab-button" data-tab="advanced">Advanced</button>
+            </div>
+        </div>
 
-        <!-- Main Courses Content (Right Side) -->
-        <div class="dashboard-content">
+        <!-- Main Content -->
+        <div class="main-content">
             <h2>Free Educational Courses</h2>
-            <p>Learn more about crypto with our free courses—perfect for beginners and seasoned investors alike.</p>
 
-            <div class="course">
-                <h3>Welcome to Kashmir Crypto Solutions</h3>
-                <p>Learn how to use our website, schedule and attend Zoom calls, and initiate Active Plans for your account.</p>
-                <p><a href="https://youtu.be/03EgkFAK0WM" target="_blank">Watch Now</a></p>
+            <!-- Beginner Category -->
+            <div id="beginner" class="tab-content active">
+                <div class="course-grid">
+                
+                <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/crypto-login-image.jpg">
+                        <h3>Welcome to Kashmir!</h3>
+                        <p>Learn how to navigate our site and use the platform.</p>
+                        <a href="https://www.youtube.com/watch?v=example8" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module1.jpg">
+                        <h3>Introduction to Cryptocurrency</h3>
+                        <p>Understand the basics of cryptocurrency, including what it is and how it works.</p>
+                        <a href="https://www.youtube.com/watch?v=example1" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module2.jpeg">
+                        <h3>Bitcoin Deep Dive</h3>
+                        <p>Learn about Bitcoin, its history, technology, and role in finance.</p>
+                        <a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module3.jpg">
+                        <h3>Understanding Crypto Wallets</h3>
+                        <p>Learn the difference between hot and cold wallets and how to use them.</p>
+                        <a href="https://www.youtube.com/watch?v=example8" target="_blank">Watch Now</a>
+                    </div>
+                   
+                </div>
             </div>
 
-            <div class="course">
-                <h3>Introduction to Cryptocurrency</h3>
-                <p>Understand the basics of cryptocurrency, including what it is, how it works, and why it matters. Perfect for beginners.</p>
-                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
-            </div>
-            <div class="course">
-                <h3>Bitcoin Deep Dive</h3>
-                <p>Explore Bitcoin in detail—its history, technology, and investment potential. Learn how to safely store and manage your BTC.</p>
-                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
-            </div>
-            <div class="course">
-                <h3>Crypto Storage</h3>
-                <p>All about how to safely secure your crypto. Hot vs Cold Storage, Wallet types, CEX vs DEX, and everything we do ourselves for protection.</p>
-                <p><a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch Now</a></p>
+            <!-- Intermediate Category -->
+            <div id="intermediate" class="tab-content">
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module4.png">
+                        <h3>Smart Contracts Deep Dive</h3>
+                        <p>Explore how smart contracts work and their uses.</p>
+                        <a href="https://www.youtube.com/watch?v=example4" target="_blank">Watch Now</a>
+                    </div>
+                   
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module5.png">
+                        <h3>Trading Basics 1</h3>
+                        <p>Understand the basics of trading crypto on exchanges.</p>
+                        <a href="https://www.youtube.com/watch?v=example12" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module6.jpg">
+                        <h3>Staking Explained</h3>
+                        <p>Learn how to stake crypto and earn rewards.</p>
+                        <a href="https://www.youtube.com/watch?v=example14" target="_blank">Watch Now</a>
+                    </div>
+                </div>
             </div>
 
-
-            <div class="course">
-                <h3>Stablecoins Explained</h3>
-                <p>Learn about stablecoins like USDC, how they maintain their value, and how to use them for steady growth.</p>
-                <p><a href="https://www.youtube.com/watch?v=example3" target="_blank">Watch Now</a></p>
+            <!-- Advanced Category -->
+            <div id="advanced" class="tab-content">
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module6.png">
+                        <h3>Identifying a Narrative</h3>
+                        <p>Learn how to find narratives playing out in real time, and how to capitalize on them.</p>
+                        <a href="https://www.youtube.com/watch?v=example6" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module7.jpg">
+                        <h3>Trading Meme Coins</h3>
+                        <p>Understand how to find and trade meme coins effectively.</p>
+                        <a href="https://www.youtube.com/watch?v=example7" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module8.jpg">
+                        <h3>NFTs in Depth Part 1</h3>
+                        <p>Learn about scaling solutions like Lightning Network.</p>
+                        <a href="https://www.youtube.com/watch?v=example16" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module9.jpg">
+                        <h3>NFTs in Depth Part 2</h3>
+                        <p>Understand non-fungible tokens and their applications.</p>
+                        <a href="https://www.youtube.com/watch?v=example17" target="_blank">Watch Now</a>
+                    </div>
+                    <div class="course-card">
+                        <img src="file:///Users/Josh/Downloads/KashmirCrypto/module10.png">
+                        <h3>Advanced Trading Strategies 1</h3>
+                        <p>Learn advanced techniques for trading crypto.</p>
+                        <a href="https://www.youtube.com/watch?v=example18" target="_blank">Watch Now</a>
+                    </div>
+                </div>
             </div>
-
-            <p><a id="back-to-dashboard" href="#">Back to Dashboard</a> | <a href="index.html">Log Out</a></p>
         </div>
     </div>
+
     <script src="script.js"></script>
     <script>
-        // Set the "Back to Dashboard" link dynamically
+        // Tab Functionality
         document.addEventListener("DOMContentLoaded", function() {
+            const tabButtons = document.querySelectorAll(".tab-button");
+            const tabContents = document.querySelectorAll(".tab-content");
+
+            tabButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove("active"));
+                    tabContents.forEach(content => content.classList.remove("active"));
+
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add("active");
+                    const tabId = this.getAttribute("data-tab");
+                    document.getElementById(tabId).classList.add("active");
+                });
+            });
+
+            // Navigation Functionality
             const dashboardLink = document.getElementById("back-to-dashboard");
-            const userDashboard = localStorage.getItem("userDashboard") || "index.html"; // Fallback to index.html if not set
+            const userDashboard = localStorage.getItem("userDashboard") || "index.html";
             dashboardLink.href = userDashboard;
         });
+
+        function logout() {
+            localStorage.removeItem("userDashboard");
+            localStorage.removeItem("currentUser");
+        }
     </script>
 </body>
 </html>
