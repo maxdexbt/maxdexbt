@@ -188,9 +188,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         type: 'vaultInfo',
-                        args: {
-                            vault: '0x5f42236dfb81cba77bf34698b2242826659d1275'
-                        }
+                        vaultAddr: '0x5f42236dfb81cba77bf34698b2242826659d1275'
                     })
                 });
 
@@ -207,8 +205,9 @@
                 // Log raw data for debugging
                 console.log('API Response:', data);
 
-                // Extract key stats (adjust based on actual response structure)
-                const aum = data.aum || data.totalAum || 1949; // Fallback to initial deposit
+                // Extract key stats from the response (adjust based on actual structure)
+                // Note: Hyperliquid's response may include 'totalAum', 'apy', 'pnl' - verify in console
+                const aum = data.totalAum || data.aum || 1949; // Fallback to initial deposit
                 const apy = data.apy || data.apyYearly || 0;
                 const pnl = data.pnl || data.profitLoss || -270; // Fallback to current loss
 
