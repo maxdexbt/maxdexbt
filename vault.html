@@ -139,7 +139,7 @@
         <!-- Overlay Module for Stats -->
         <div class="vault-module">
             <h2>Kashmir Vault Performance</h2>
-            <p class="vault-intro">Review our Vaults performance below as of 04:41 PM EDT, October 07, 2025.</p>
+            <p class="vault-intro">Review our Vaults performance below as of 04:47 PM EDT, October 07, 2025.</p>
 
             <!-- Key Stats -->
             <div class="stats-grid">
@@ -206,10 +206,10 @@
                 // Log raw data for debugging
                 console.log('API Response:', data);
 
-                // Extract key stats from the response (based on provided console log)
+                // Extract key stats from the response
                 const aum = data.aum || data.totalAum || 1949; // Fallback to initial deposit
                 const apy = (data.apr * 100) || data.apy || 0; // Convert apr to percentage
-                const pnl = data.portfolio.reduce((sum, pos) => sum + (pos[1] || 0), 0) || -246; // Sum PnL from portfolio [position, pnl]
+                const pnl = data.portfolio.reduce((sum, pos) => sum + (Number(pos[1]) || 0), 0) || -246; // Sum PnL, handle non-numeric
 
                 // Update DOM with real-time stats
                 document.getElementById('aum-value').textContent = `$${aum.toLocaleString()}`;
@@ -219,7 +219,7 @@
                 // Update chart with performance data (use portfolio data if available)
                 const performanceData = data.portfolio.map((pos, index) => ({
                     date: new Date(2025, 9, 1 + index).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }), // Sample dates
-                    value: 1949 + (pos[1] || 0) // Start at initial deposit, adjust by PnL
+                    value: 1949 + (Number(pos[1]) || 0) // Start at initial deposit, adjust by PnL
                 })) || generateSamplePerformanceData();
                 updateChart(performanceData);
             } catch (error) {
@@ -240,7 +240,7 @@
                 { date: 'Oct 01, 2025', value: 1920 },
                 { date: 'Oct 03, 2025', value: 1880 },
                 { date: 'Oct 05, 2025', value: 1800 },
-                { date: 'Oct 07, 2025 04:41 PM', value: 1703 } // Current value (down $246, ~12.6%)
+                { date: 'Oct 07, 2025 04:47 PM', value: 1703 } // Current value (down $246, ~12.6%)
             ];
         }
 
