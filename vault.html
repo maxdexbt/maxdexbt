@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Performance | Kashmir Crypto Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For the performance chart -->
+</head>
+<body>
+    <div class="vault-page">
+        <!-- Background Image -->
+        <div class="vault-bg">
+            <img src="vaultbg.jpeg" alt="Vault Background" class="bg-image">
+        </div>
 
+        <!-- Overlay Module for Stats -->
+        <div class="vault-module">
+            <h2>Hyperliquid Vault Performance</h2>
+            <p class="vault-intro">Your initial deposit: $1,949. Current status: Down $270 (12%). Track your vault's real-time performance below.</p>
+
+            <!-- Key Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total AUM</h3>
+                    <p id="aum-value">$0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>APY</h3>
+                    <p id="apy-value">0%</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Profit/Loss</h3>
+                    <p id="profit-loss-value">-$270</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Depositors</h3>
+                    <p id="depositors-value">0</p>
+                </div>
+            </div>
+
+            <!-- Performance Chart -->
+            <div class="chart-container">
+                <canvas id="vaultChart"></canvas>
+            </div>
+
+            <!-- Go Back Button -->
+            <div class="vault-actions">
+                <a href="#" id="back-to-dashboard" class="back-btn">Go Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the "Go Back to Dashboard" link dynamically
+        document.addEventListener("DOMContentLoaded", function() {
+            const backLink = document.getElementById("back-to-dashboard");
+            const userDashboard = localStorage.getItem("userDashboard") || "dashboard.html";
+            backLink.href = userDashboard;
+        });
+
+        // Fetch vault data from Hyperliquid API
+        async function fetchVaultData() {
+            try {
+                // Using Hyperliquid's public API endpoint for vault stats (adjust if needed)
+                const response = await fetch('https://api.hyperliquid.xyz/info', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        type: 'vaultInfo',
+                        vaultAddr: '0x5f42236dfb81cba77bf34698b2242826659d1275'
+                    })
+                });
+                const data = await response.json();
+
+                // Extract key stats (adjust based on API response structure)
+                const aum = data.aum || 0; // Total AUM
+                const apy = data.apy || 0; // APY
+                const pnl = data.pnl || -270; // Profit/Loss
+                const depositors = data.depositors || 0; // Number of depositors
+
+                // Update DOM
+                document.getElementById('aum-value').textContent = `$${aum.toLocaleString()}`;
+                document.getElementById('apy-value').textContent = `${apy.toFixed(2)}%`;
+                document.getElementById('profit-loss-value').textContent = `$${pnl.toFixed(2)}`;
+                document.getElementById('depositors-value').textContent = depositors.toLocaleString();
+
+                // Update chart with performance data
+                updateChart(data.performanceData || []); // Assume API returns performance data array
+            } catch (error) {
+                console.error('Error fetching vault data:', error);
+                // Fallback to static data
+                document.getElementById('aum-value').textContent = '$1,949';
+                document.getElementById('apy-value').textContent = '0%';
+                document.getElementById('profit-loss-value').textContent = '-$270';
+                document.getElementById('depositors-value').textContent = '1';
+                updateChart([]); // Empty chart on error
+            }
+        }
+
+        // Update the performance chart
+        function updateChart(performanceData) {
+            const ctx = document.getElementById('vaultChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: performanceData.map(d => d.date) || ['Jan', 'Feb', 'Mar', 'Apr', 'May'], // Placeholder dates
+                    datasets: [{
+                        label: 'Vault Performance',
+                        data: performanceData.map(d => d.value) || [1949, 1950, 1920, 1900, 1679], // Placeholder data (initial $1949, down to $1679)
+                        borderColor: '#2c3e50',
+                        backgroundColor: 'rgba(44, 62, 80, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: { display: true, text: 'Value ($)' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Month' }
+                        }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'Vault Performance Over Time' }
+                    }
+                }
+            });
+        }
+
+        // Load data on page load
+        fetchVaultData();
+    </script>
+</body>
+</html>
