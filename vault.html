@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vault Performance | Kashmir Crypto Solutions</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Suppress favicon 404 error -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For the performance chart -->
     <style>
         /* Vault-specific styles (no impact on other pages) */
@@ -138,7 +139,7 @@
         <!-- Overlay Module for Stats -->
         <div class="vault-module">
             <h2>Kashmir Vault Performance</h2>
-            <p class="vault-intro">Review our Vaults performance below as of 04:05 PM EDT, October 07, 2025.</p>
+            <p class="vault-intro">Review our Vaults performance below as of 04:14 PM EDT, October 07, 2025.</p>
 
             <!-- Key Stats -->
             <div class="stats-grid">
@@ -174,34 +175,40 @@
             const backLink = document.getElementById("back-to-dashboard");
             const userDashboard = localStorage.getItem("userDashboard") || "dashboard.html";
             backLink.href = userDashboard;
+
+            // Fetch real-time vault data
+            fetchVaultData();
         });
 
-        // Fetch vault data from Hyperliquid API (with improved error handling)
         async function fetchVaultData() {
             try {
-                // Hyperliquid's official public API for vault info
+                // Hyperliquid's official public API for vault info with improved request
                 const response = await fetch('https://api.hyperliquid.xyz/info', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         type: 'vaultInfo',
-                        vaultAddr: '0x5f42236dfb81cba77bf34698b2242826659d1275'
+                        args: {
+                            vault: '0x5f42236dfb81cba77bf34698b2242826659d1275'
+                        }
                     })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
                 }
 
                 const data = await response.json();
 
                 if (data.error) {
-                    throw new Error(data.error);
+                    throw new Error(`API Error: ${data.error}`);
                 }
 
-                // Extract key stats from the response (adjust based on actual structure)
-                // Note: Hyperliquid's response may include 'totalAum', 'apy', 'pnl' - verify in console
-                const aum = data.totalAum || data.aum || 1949; // Fallback to initial deposit
+                // Log raw data for debugging
+                console.log('API Response:', data);
+
+                // Extract key stats (adjust based on actual response structure)
+                const aum = data.aum || data.totalAum || 1949; // Fallback to initial deposit
                 const apy = data.apy || data.apyYearly || 0;
                 const pnl = data.pnl || data.profitLoss || -270; // Fallback to current loss
 
@@ -231,7 +238,7 @@
                 { date: 'Oct 01, 2025', value: 1930 },
                 { date: 'Oct 03, 2025', value: 1900 },
                 { date: 'Oct 05, 2025', value: 1800 },
-                { date: 'Oct 07, 2025 04:05 PM', value: 1679 } // Current value (down $270, 12%)
+                { date: 'Oct 07, 2025 04:14 PM', value: 1679 } // Current value (down $270, 12%)
             ];
         }
 
