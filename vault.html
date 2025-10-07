@@ -139,7 +139,7 @@
         <!-- Overlay Module for Stats -->
         <div class="vault-module">
             <h2>Kashmir Vault Performance</h2>
-            <p class="vault-intro">Review our Vaults performance below as of 04:36 PM EDT, October 07, 2025.</p>
+            <p class="vault-intro">Review our Vaults performance below as of 04:41 PM EDT, October 07, 2025.</p>
 
             <!-- Key Stats -->
             <div class="stats-grid">
@@ -240,7 +240,7 @@
                 { date: 'Oct 01, 2025', value: 1920 },
                 { date: 'Oct 03, 2025', value: 1880 },
                 { date: 'Oct 05, 2025', value: 1800 },
-                { date: 'Oct 07, 2025 04:36 PM', value: 1703 } // Current value (down $246, ~12.6%)
+                { date: 'Oct 07, 2025 04:41 PM', value: 1703 } // Current value (down $246, ~12.6%)
             ];
         }
 
@@ -252,10 +252,10 @@
             window.myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: performanceData.map(d => d.date),
+                    labels: performanceData.map(d => d.date || d.timestamp),
                     datasets: [{
                         label: 'Vault Value ($)',
-                        data: performanceData.map(d => d.value),
+                        data: performanceData.map(d => d.value || d),
                         borderColor: '#2c3e50',
                         backgroundColor: 'rgba(44, 62, 80, 0.1)',
                         tension: 0.4,
